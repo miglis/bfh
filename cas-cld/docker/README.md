@@ -36,5 +36,17 @@ Run the static-site container with the adjusted env variable AUTHOR:
 
 Open the static site in browser:
 
-
 <center><img src="images/static-site.png" title="setup"></center>
+
+## Webapps with Docker Part Deux
+
+### Package and run a custom app using Docker
+
+Create a new Docker image with `docker image build` command:
+
+<center><img src="images/docker-image-build-tweet.png" title="setup"></center>
+
+Run the builded image:
+
+<center><img src="images/run-linux-tweet-app.png" title="setup"></center>
+
