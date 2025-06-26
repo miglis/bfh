@@ -161,6 +161,52 @@ $ sudo docker ps
 
 <center><img src="images/old-and-new.png" title="setup"></center>
 
+## Docker and DevOps
+
+### Pushing my image to DockerHub
+
+Before pushing my images to DockerHub i rebuilded them with the correct Docker
+ID, since i messed up a little bit.
+
+```
+$ sudo docker login -u stumi99 docker.io
+$ sudo docker image ls
+$ sudo docker image push stumi99/linux_tweet_app:1.0
+$ sudo docker image push stumi99/linux_tweet_app:2.0
+```
+
+<center><img src="images/push-to-dockerhub.png" title="setup"></center>
+
+After pushing the images to DockerHub, I checked if they are present.
+
+<center><img src="images/dockerhub.png" title="setup"></center>
+
+### Setup an Automated Build
+
+The newly created repo [bfh-cas-cld-docker-builds](https://github.com/MigliS/bfh-cas-cld-docker-builds)
+which contains the automated build.
+
+<center><img src="images/add-workflow.png" title="setup"></center>
+
+After the initial commit, the workflow was triggered unsuccessfully due to the
+personal access token I created with the wrong scopes.
+
+<center><img src="images/run-workflow.png" title="setup"></center>
+
+To test the workflow i changed the title in the `index.html`.
+
+<center><img src="images/test-workflow.png" title="setup"></center>
+
+<center><img src="images/workflow-run2.png" title="setup"></center>
+
+### Implement some test
+
+Adding the testing job and build status to the repo results in:
+
+<center><img src="images/final-workflow.png" title="setup"></center>
+
+<center><img src="images/workflow-status.png" title="setup"></center>
+
 
 
 
