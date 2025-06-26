@@ -112,3 +112,55 @@ $ docker container run --detach --publish --publish 8080:80 \
 
 <center><img src="images/run-linux-tweet-app.png" title="setup"></center>
 
+### Modify a running website
+
+Start the webapp with a bind mount.
+
+```
+$ sudo docker run --detach --publish 8080:80 --name linux_tweet_app \
+ --mount type=bind,source="$(pwd)",target=/usr/share/nginx/html \
+miglis/linux_tweet_app:1.0
+```
+
+<center><img src="images/bind-mount.png" title="setup"></center>
+
+Modify the running website, by copying a new `index.html` into the container.
+For that we use the `index-new.html` provided by the `linux_tweet_app` repo.
+After copying the new `index.html`file, I edited the line 33 and changed the
+text to "Docker is Awesome! Kubernetes is more fun!"
+
+```
+$ cd ~/git/linux_tweet_app
+$ cp index-new.html index.html
+$ hx index.html
+```
+
+<center><img src="images/edited-bind-mount.png" title="setup"></center>
+
+### Creating my first image
+
+With the new `index.html` file, I created new image with the tag `2.0`. 
+
+```
+$ cd ~/git/linux_tweet_app
+$ sudo docker image build --tag miglis/linux_tweet_app:2.0 .
+$ sudo docker image ls
+```
+
+<center><img src="images/new-tag.png" title="setup"></center>
+
+Testing the new, as well as the old version.
+
+```
+$ sudo docker container run --detach --publish 8080:80 --name linux_tweet_app \
+miglis/linux_tweet_app:2.0
+$ sudo docker container run --detach --publish 8081:80 --name old_linux_tweet_app \
+miglis/linux_tweet_app:1.0
+$ sudo docker ps
+```
+
+<center><img src="images/old-and-new.png" title="setup"></center>
+
+
+
+
