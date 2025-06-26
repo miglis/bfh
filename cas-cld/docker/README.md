@@ -207,6 +207,22 @@ Adding the testing job and build status to the repo results in:
 
 <center><img src="images/workflow-status.png" title="setup"></center>
 
+## Deploying an app with Docker Compose
 
+### Runing the Vote App
 
+```
+$ sudo docker compose up -d
+$ sudo docker compose ps
+```
+
+<center><img src="images/vote-app.png" title="setup"></center>
+
+### Customizing the Vote App
+
+Editing the mentioned files leads to a "new" voting app.
+
+<center><img src="images/own-voting.png" title="setup"></center>
+
+<center><img src="images/own-voting-page.png" title="setup"></center>
 
